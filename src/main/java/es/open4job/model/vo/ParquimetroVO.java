@@ -1,6 +1,6 @@
-package vo;
+package es.open4job.model.vo;
 
-public class ParquimetrosVO {
+public class ParquimetroVO {
 	public int id;
 	public double latitud;
 	public double longitud;
@@ -8,11 +8,11 @@ public class ParquimetrosVO {
 	public String icono;
 	public String descripcion;
 	
-	public ParquimetrosVO() {
+	public ParquimetroVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ParquimetrosVO(int id, double latitud, double longitud, 
+	public ParquimetroVO(int id, double latitud, double longitud, 
 				String titulo, String icono, String descripcion) {
 		this.id = id;
 		this.latitud = latitud;

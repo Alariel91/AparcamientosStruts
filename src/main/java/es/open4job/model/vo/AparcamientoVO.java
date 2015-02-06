@@ -1,17 +1,17 @@
-package vo;
+package es.open4job.model.vo;
 
-public class AparcamientoPDVO {
+public class AparcamientoVO {
 	public int id;
 	public double latitud;
 	public double longitud;
 	public String titulo;
 	public String icono;
 	
-	public AparcamientoPDVO() {
+	public AparcamientoVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public AparcamientoPDVO(int id, double latitud, double longitud,
+	public AparcamientoVO(int id, double latitud, double longitud,
 			String titulo, String icono){
 		this.id = id;
 		this.latitud = latitud;

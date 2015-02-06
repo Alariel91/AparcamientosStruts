@@ -1,4 +1,4 @@
-package dao;
+package es.open4job.model.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,27 +8,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.*;
 
-import sql.sentenciasSQL;
-import vo.*;
+import es.open4job.model.vo.*;
 
-public class AparcamientoPD_DAO {
+public class AparcamientoDAO {
 	private Statement stm;
 	private PreparedStatement pstm;
 	private ResultSet rs;
 
-	public AparcamientoPD_DAO() {
+	public AparcamientoDAO() {
 
 	}
 
-	public ArrayList<AparcamientoPDVO> getallAparcamientos() {
-		ArrayList<AparcamientoPDVO> listaAparcamientos = new ArrayList<AparcamientoPDVO>();
-		sentenciasSQL sql = new sentenciasSQL();
+	public ArrayList<AparcamientoVO> getallAparcamientos() {
+		ArrayList<AparcamientoVO> listaAparcamientos = new ArrayList<AparcamientoVO>();
+		SentenciasSQL sql = new SentenciasSQL();
 		try {
 			sql.conectarBBDD();
 			stm = sql.getConn().createStatement();
 			rs = stm.executeQuery("select * from APARCAMIENTOSPERDISCAP");
 			while (rs.next()) {
-				AparcamientoPDVO aparcamiento = new AparcamientoPDVO();
+				AparcamientoVO aparcamiento = new AparcamientoVO();
 				aparcamiento.setId(rs.getInt("id"));
 				aparcamiento.setLatitud(rs.getDouble("latitud"));
 				aparcamiento.setLongitud(rs.getDouble("longitud"));
@@ -47,10 +46,10 @@ public class AparcamientoPD_DAO {
 		return listaAparcamientos;
 	}
 
-	public AparcamientoPDVO getAparcamientoPDbyId(int id) {
-		sentenciasSQL sql = new sentenciasSQL();
+	public AparcamientoVO getAparcamientoPDbyId(int id) {
+		SentenciasSQL sql = new SentenciasSQL();
 		try {
-			AparcamientoPDVO aparcamiento = new AparcamientoPDVO();
+			AparcamientoVO aparcamiento = new AparcamientoVO();
 			sql.conectarBBDD();
 			pstm = sql.getConn().prepareStatement(
 					"select * from APARCAMIENTOSPERDISCAP where id = ?");
@@ -75,9 +74,9 @@ public class AparcamientoPD_DAO {
 	}
 
 	public void InsertarAparcamientoPDVO() {
-		sentenciasSQL sql = new sentenciasSQL();
+		SentenciasSQL sql = new SentenciasSQL();
 		try {
-			AparcamientoPDVO aparcamiento = new AparcamientoPDVO(224, 2153216,
+			AparcamientoVO aparcamiento = new AparcamientoVO(224, 2153216,
 					1685651, "Aparcamiento Discapacitados", "icono.png");
 			sql.conectarBBDD();
 			pstm = sql.getConn().prepareStatement(
@@ -100,7 +99,7 @@ public class AparcamientoPD_DAO {
 	}
 
 	public void ActualizarAparcamientoPDVO() {
-		sentenciasSQL sql = new sentenciasSQL();
+		SentenciasSQL sql = new SentenciasSQL();
 		try {
 			sql.conectarBBDD();
 			pstm = sql.getConn().prepareStatement(
@@ -129,13 +128,13 @@ public class AparcamientoPD_DAO {
 			fw = new FileWriter(fichero);
 			bw = new BufferedWriter(fw);
 
-			ArrayList<AparcamientoPDVO> aparcamientos = new ArrayList<AparcamientoPDVO>();
+			ArrayList<AparcamientoVO> aparcamientos = new ArrayList<AparcamientoVO>();
 			aparcamientos = getallAparcamientos();
 
 			Iterator iterador = aparcamientos.iterator();
 
 			while (iterador.hasNext()) {
-				AparcamientoPDVO aparcamiento = (AparcamientoPDVO) iterador
+				AparcamientoVO aparcamiento = (AparcamientoVO) iterador
 						.next();
 				bw.write(aparcamiento.getId() + ";" + aparcamiento.getTitulo()
 						+ ";" + aparcamiento.getLatitud() + ";"
@@ -154,14 +153,14 @@ public class AparcamientoPD_DAO {
 	}
 
 	public void PruebaInsertarCommit() {
-		sentenciasSQL sql = new sentenciasSQL();
+		SentenciasSQL sql = new SentenciasSQL();
 		try {
 			int id = 1;
 			while (id % 2 != 0) {
 				Random idRandom = new Random();
 				id = idRandom.nextInt(10);
 				System.out.println("ID 1" + id);
-				AparcamientoPDVO aparcamiento = new AparcamientoPDVO(id,
+				AparcamientoVO aparcamiento = new AparcamientoVO(id,
 						2153216, 1685651, "Aparcamiento de prueba", "icono.png");
 				sql.conectarBBDD();
 				pstm = sql

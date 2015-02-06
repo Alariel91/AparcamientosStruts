@@ -1,4 +1,4 @@
-package sql;
+package es.open4job.model.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,11 +12,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class sentenciasSQL {
+public class SentenciasSQL {
 
 	private Connection conn;
 
-	public sentenciasSQL() {
+	public SentenciasSQL() {
 
 	}
 
