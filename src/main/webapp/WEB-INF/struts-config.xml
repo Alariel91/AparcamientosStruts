@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struts-config>
-<form-beans>
-<!-- Le decimos el nombre de nuestra clase formulario y la ruta -->
-	<form-bean name="listadoAparcamientoForm" 
-		type="es.open4job.web.struts.form.VerListadoAparcamientoForm"/>
+	<form-beans>
+		<!-- Le decimos el nombre de nuestra clase formulario y la ruta -->
+		<form-bean name="listadoAparcamientoForm"
+			type="es.open4job.web.struts.form.VerListadoAparcamientoForm" />
 	</form-beans>
 	<action-mappings>
-	   <action path="/verListadoAparcamiento"
-		type="es.open4job.web.struts.action.VerListadoAparcamientoAction"
-		 name="listadoAparcamientoForm" input="/error.jsp">
-		<forward name="success" path="/verListadoAparcamiento.jsp"/>
-	   </action>
+		<action path="/verListadoAparcamiento"
+			type="es.open4job.web.struts.action.VerListadoAparcamientoAction"
+			name="listadoAparcamientoForm" input="/error.jsp">
+			<forward name="success" path="/verListadoAparcamiento.jsp" />
+		</action>
+
+		<action path="/VerDatosAparcamientoPorIdAction"
+			type="es.open4job.web.struts.action.VerDatosAparcamientoPorIdAction"
+			name="listadoAparcamientoForm" input="/error.jsp">
+			<forward name="ok" path="/verDatosAparcamientoPorId.jsp" />
+		</action>
 	</action-mappings>
-	<message-resources
-		parameter="es.open4job.web.properties.Common" />
+	<message-resources parameter="es.open4job.web.properties.Common" />
 </struts-config>

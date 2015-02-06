@@ -22,8 +22,6 @@ public class VerListadoAparcamientoAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		//VerListadoAparcamientoForm datos = (VerListadoAparcamientoForm) form;
-
 		AparcamientoDAO daoObj = new AparcamientoDAO();
 		
 		// Creo la lista
