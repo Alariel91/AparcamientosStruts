@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<struts-config>
+<form-beans>
+<!-- Le decimos el nombre de nuestra clase formulario y la ruta -->
+	<form-bean name="DatosFormulario" 
+		type="es.open4job.struts.DatosFormulario"/>
+	</form-beans>
+ <!-- ponemos el path por el que queremos que entre , la ruta y el name tiene
+ que ser el mismo que el formulario, el input sirve para que en caso de error
+ se mete en la pagina error.jsp
+ 
+ En el forward le dices que la key es success y que quiere que el formulario 
+ cuando sea correcto se va a hola.jsp -->
+	<action-mappings>
+	   <action path="/helloWorld"
+		type="es.open4job.struts.HelloWorldAction"
+		 name="DatosFormulario" input="/error.jsp">
+		<forward name="success" path="/hola.jsp"/>
+	   </action>
+	</action-mappings>
+	<message-resources
+		parameter="es.open4job.common.properties.Common" />
+</struts-config>
